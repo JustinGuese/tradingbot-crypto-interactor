@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: tradingbotinteractor
+Version: 0.0.1
+Summary: Interacts with accounthandler
+Home-page: https://github.com/JustinGuese/tradingbot-crypto-interactor
+Author: Justin Guese
+Author-email: guese.justin@gmail.com
+License: UNKNOWN
+Project-URL: Bug Tracker, https://github.com/JustinGuese/tradingbot-crypto-interactor/issues
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+
+actually controls
+https://github.com/JustinGuese/tradingbot-crypto
+
