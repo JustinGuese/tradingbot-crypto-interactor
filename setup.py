@@ -21,7 +21,6 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     install_requires = ["requests"],
-    package_dir={"": "tradinghandler"},
-    packages=setuptools.find_packages(where="tradinghandler"),
+    packages=["tradinghandler"],
     python_requires=">=3.9",
 )

@@ -1,0 +1,10 @@
+README.md
+pyproject.toml
+setup.py
+tradingbotinteractor.egg-info/PKG-INFO
+tradingbotinteractor.egg-info/SOURCES.txt
+tradingbotinteractor.egg-info/dependency_links.txt
+tradingbotinteractor.egg-info/requires.txt
+tradingbotinteractor.egg-info/top_level.txt
+tradinghandler/__init__.py
+tradinghandler/trading.py
