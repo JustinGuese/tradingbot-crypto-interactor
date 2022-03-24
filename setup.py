@@ -11,16 +11,17 @@ setuptools.setup(
     description="Interacts with accounthandler",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/pypa/sampleproject",
+    url="https://github.com/JustinGuese/tradingbot-crypto-interactor",
     project_urls={
-        "Bug Tracker": "https://github.com/pypa/sampleproject/issues",
+        "Bug Tracker": "https://github.com/JustinGuese/tradingbot-crypto-interactor/issues",
     },
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    package_dir={"": "src"},
-    packages=setuptools.find_packages(where="src"),
-    python_requires=">=3.6",
+    install_requires = ["requests"],
+    package_dir={"": "tradinghandler"},
+    packages=setuptools.find_packages(where="tradinghandler"),
+    python_requires=">=3.9",
 )

@@ -1,0 +1,8 @@
+README.md
+pyproject.toml
+setup.py
+tradinghandler/tradingbotinteractor_guestros.egg-info/PKG-INFO
+tradinghandler/tradingbotinteractor_guestros.egg-info/SOURCES.txt
+tradinghandler/tradingbotinteractor_guestros.egg-info/dependency_links.txt
+tradinghandler/tradingbotinteractor_guestros.egg-info/requires.txt
+tradinghandler/tradingbotinteractor_guestros.egg-info/top_level.txt
