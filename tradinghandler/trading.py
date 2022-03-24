@@ -22,8 +22,12 @@ class TradingInteractor():
         url = self.url + "priceHistoric/" + symbol + "/" + str(lookback)
         return get(url).json()
 
-    def getApeWisdom(self, symbol, lookback):
+    def getApeWisdomSymbol(self, symbol, lookback):
         url = self.url + "apewisdom/" + symbol + "/" + str(lookback)
+        return get(url).json()
+
+    def getApeWisdomLast(self):
+        url = self.url + "apewisdom/"
         return get(url).json()
 
     def buy(self, symbol, amountInUSD):
