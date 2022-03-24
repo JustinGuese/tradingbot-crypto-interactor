@@ -9,7 +9,7 @@ class TradingInteractor():
     def getPortfolio(self):
         if self.portfolio is None:
             url = self.url + "portfolio/" + self.accountname
-            self.portfolio = get(url)
+            self.portfolio = get(url).json()
         return self.portfolio
 
     def getUSD(self):
@@ -20,18 +20,18 @@ class TradingInteractor():
     def getData(self, symbol, lookback = 1):
         # lookback is in days
         url = self.url + "priceHistoric/" + symbol + "/" + str(lookback)
-        return get(url)
+        return get(url).json()
 
     def getApeWisdom(self, symbol, lookback):
         url = self.url + "apewisdom/" + symbol + "/" + str(lookback)
-        return get(url)
+        return get(url).json()
 
     def buy(self, symbol, amountInUSD):
         url = self.url + "buy/" + self.accountname + "/" + symbol + "/" + str(amountInUSD) + "?amountInUSD=true"
-        self.portfolio = put(url)
+        self.portfolio = put(url).json()
         return self.portfolio
 
     def sell(self, symbol, amountInUSD = -1):
         url = self.url + "sell/" + self.accountname + "/" + symbol + "/" + str(amountInUSD) + "?amountInUSD=true"
-        self.portfolio = put(url)
+        self.portfolio = put(url).json()
         return self.portfolio
