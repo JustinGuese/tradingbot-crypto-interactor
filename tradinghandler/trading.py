@@ -1,4 +1,5 @@
 from requests import post, get, put
+import pandas as pd
 
 class TradingInteractor():
     def __init__(self, accountname):
@@ -20,7 +21,11 @@ class TradingInteractor():
     def getData(self, symbol, lookback = 1):
         # lookback is in days
         url = self.url + "priceHistoric/" + symbol + "/" + str(lookback)
-        return get(url).json()
+        data = get(url).json()
+        data = pd.DataFrame(data)
+        # it is reversed, so switch around
+        data = data.iloc[::-1]
+        return data
 
     def getApeWisdomSymbol(self, symbol, lookback):
         url = self.url + "apewisdom/" + symbol + "/" + str(lookback)

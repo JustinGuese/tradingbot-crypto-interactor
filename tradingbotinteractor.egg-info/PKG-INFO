@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: tradingbotinteractor
-Version: 0.0.1
+Version: 0.0.2
 Summary: Interacts with accounthandler
 Home-page: https://github.com/JustinGuese/tradingbot-crypto-interactor
 Author: Justin Guese
@@ -16,6 +16,8 @@ Description-Content-Type: text/markdown
 
 actually controls
 https://github.com/JustinGuese/tradingbot-crypto
+
+python3 -m build
 
 `from tradinghandler.trading import TradingInteractor`
 
