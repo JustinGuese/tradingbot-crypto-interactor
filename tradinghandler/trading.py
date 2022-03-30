@@ -5,17 +5,15 @@ class TradingInteractor():
     def __init__(self, accountname):
         self.url = "http://192.168.178.36:30002/"
         self.accountname = accountname
-        self.portfolio = None
+        self.portfolio = self.getPortfolio()
 
     def getPortfolio(self):
-        if self.portfolio is None:
-            url = self.url + "portfolio/" + self.accountname
-            self.portfolio = get(url).json()
+        url = self.url + "portfolio/" + self.accountname
+        self.portfolio = get(url).json()
         return self.portfolio
 
     def getUSD(self):
-        if self.portfolio is None:
-            self.getPortfolio()
+        self.getPortfolio()
         return self.portfolio["USDT"]
 
     def getData(self, symbol, lookback = 1):
