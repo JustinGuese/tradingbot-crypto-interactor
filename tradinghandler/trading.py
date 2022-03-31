@@ -2,8 +2,8 @@ from requests import post, get, put
 import pandas as pd
 
 class TradingInteractor():
-    def __init__(self, accountname):
-        self.url = "http://192.168.178.36:30002/"
+    def __init__(self, accountname, url = "192.168.178.36"):
+        self.url = "http://%s:30002/" % url
         self.accountname = accountname
         self.portfolio = self.getPortfolio()
 
