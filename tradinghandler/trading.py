@@ -34,7 +34,7 @@ class TradingInteractor():
     # data get functions
     def getData(self, symbol, lookback = 1):
         # lookback is in days
-        url = self.url + "/data/priceHistoric/" + symbol + "/" + str(lookback)
+        url = self.url + "data/priceHistoric/" + symbol + "/" + str(lookback)
         data = get(url).json()
         data = pd.DataFrame(data)
         # it is reversed, so switch around
@@ -56,5 +56,4 @@ class TradingInteractor():
     def getBinanceRecentTrades(self, symbol, lookbackdays = -1):
         # -1 means all the data we have
         url = self.url + "data/binancerecenttrades/" + symbol + "/" + str(lookbackdays)
-        print("ich würde jetzt diese verfickte url anfragen: " + url)
         return get(url).json()
