@@ -16,23 +16,6 @@ class TradingInteractor():
         self.getPortfolio()
         return self.portfolio["USDT"]
 
-    def getData(self, symbol, lookback = 1):
-        # lookback is in days
-        url = self.url + "priceHistoric/" + symbol + "/" + str(lookback)
-        data = get(url).json()
-        data = pd.DataFrame(data)
-        # it is reversed, so switch around
-        data = data.iloc[::-1]
-        return data
-
-    def getApeWisdomSymbol(self, symbol, lookback):
-        url = self.url + "apewisdom/" + symbol + "/" + str(lookback)
-        return get(url).json()
-
-    def getApeWisdomLast(self):
-        url = self.url + "apewisdom/"
-        return get(url).json()
-
     def buy(self, symbol, amountInUSD):
         url = self.url + "buy/" + self.accountname + "/" + symbol + "/" + str(amountInUSD) + "?amountInUSD=true"
         self.portfolio = put(url).json()
@@ -42,3 +25,35 @@ class TradingInteractor():
         url = self.url + "sell/" + self.accountname + "/" + symbol + "/" + str(amountInUSD) + "?amountInUSD=true"
         self.portfolio = put(url).json()
         return self.portfolio
+
+    def emergencyLiquidate(self, accountname):
+        url = self.url + "emergencyLiquidate/" + accountname
+        self.portfolio = post(url).json()["portfolio"]
+        return self.portfolio
+
+    # data get functions
+    def getData(self, symbol, lookback = 1):
+        # lookback is in days
+        url = self.url + "/data/priceHistoric/" + symbol + "/" + str(lookback)
+        data = get(url).json()
+        data = pd.DataFrame(data)
+        # it is reversed, so switch around
+        data = data.iloc[::-1]
+        return data
+
+    def getApeWisdomSymbol(self, symbol, lookback):
+        url = self.url + "/data/apewisdom/" + symbol + "/" + str(lookback)
+        return get(url).json()
+
+    def getApeWisdomLast(self):
+        url = self.url + "/data/apewisdom/"
+        return get(url).json()
+
+    def getFearGreedIndex(self, lookbackdays = 1):
+        url = self.url + "/data/feargreedindex/" + str(lookbackdays)
+        return get(url).json()
+
+    def getBinanceRecentTrades(self, symbol, lookbackdays = -1):
+        # -1 means all the data we have
+        url = self.url + "/data/binancerecenttrades/" + symbol + "/" + str(lookbackdays)
+        return get(url).json()
