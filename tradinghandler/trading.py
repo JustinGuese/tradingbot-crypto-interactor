@@ -56,4 +56,5 @@ class TradingInteractor():
     def getBinanceRecentTrades(self, symbol, lookbackdays = -1):
         # -1 means all the data we have
         url = self.url + "data/binancerecenttrades/" + symbol + "/" + str(lookbackdays)
+        print("ich würde jetzt diese verfickte url anfragen: " + url)
         return get(url).json()
