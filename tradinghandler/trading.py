@@ -59,3 +59,11 @@ class TradingInteractor():
         data = get(url).json()
         data = pd.DataFrame(data)
         return data
+
+    def getTARecommendation(self, symbol):
+        url = self.url + "data/tasummary/" + symbol + "/1"
+        data = get(url).json()
+        if len(data) > 0:
+            return data[0]["recommendation"]
+        else:
+            return None
