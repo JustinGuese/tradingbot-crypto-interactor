@@ -2,7 +2,7 @@ from requests import post, get, put
 import pandas as pd
 
 class TradingInteractor():
-    def __init__(self, accountname, url = "192.168.178.36"):
+    def __init__(self, accountname, url = "198.74.104.172"):
         self.url = "http://%s:30002/" % url
         self.accountname = accountname
         self.portfolio = self.getPortfolio()
