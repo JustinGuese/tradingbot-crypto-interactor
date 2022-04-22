@@ -42,7 +42,7 @@ class TradingInteractor():
         return data
 
     def getCurrentPrice(self, symbol):
-        url = self.url + "data/currentprice/" + symbol
+        url = self.url + "data/price/current/" + symbol
         return float(get(url).text)
 
     def getApeWisdomSymbol(self, symbol, lookback):
