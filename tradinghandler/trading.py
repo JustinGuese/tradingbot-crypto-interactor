@@ -41,6 +41,10 @@ class TradingInteractor():
         data = data.iloc[::-1]
         return data
 
+    def getCurrentPrice(self, symbol):
+        url = self.url + "data/currentprice/" + symbol
+        return float(get(url).text)
+
     def getApeWisdomSymbol(self, symbol, lookback):
         url = self.url + "data/apewisdom/" + symbol + "/" + str(lookback)
         return get(url).json()

@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="tradingbotinteractor",
-    version="0.0.7",
+    version="0.0.8",
     author="Justin Guese",
     author_email="guese.justin@gmail.com",
     description="Interacts with accounthandler",
