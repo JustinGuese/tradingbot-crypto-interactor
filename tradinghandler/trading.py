@@ -18,18 +18,30 @@ class TradingInteractor():
 
     def buy(self, symbol, amountInUSD):
         url = self.url + "buy/" + self.accountname + "/" + symbol + "/" + str(amountInUSD) + "?amountInUSD=true"
-        self.portfolio = put(url).json()
-        return self.portfolio
+        resp = put(url)
+        if resp.status_code == 200:
+            self.portfolio = resp.json()["portfolio"]
+            return self.portfolio
+        else:
+            raise ValueError("could not buy %s.errorcode: %s, errormessage: %s" % (symbol, str(resp.status_code), str(resp.text)))
 
     def sell(self, symbol, amountInUSD = -1):
         url = self.url + "sell/" + self.accountname + "/" + symbol + "/" + str(amountInUSD) + "?amountInUSD=true"
-        self.portfolio = put(url).json()
-        return self.portfolio
+        resp = put(url)
+        if resp.status_code == 200:
+            self.portfolio = resp.json()["portfolio"]
+            return self.portfolio
+        else:
+            raise ValueError("could not sell %s.errorcode: %s, errormessage: %s" % (symbol, str(resp.status_code), str(resp.text)))
 
     def emergencyLiquidate(self, accountname):
         url = self.url + "emergencyLiquidate/" + accountname
-        self.portfolio = post(url).json()["portfolio"]
-        return self.portfolio
+        resp = put(url)
+        if resp.status_code == 200:
+            self.portfolio = resp.json()["portfolio"]
+            return self.portfolio
+        else:
+            raise ValueError("could not emergency liquidate %s.errorcode: %s, errormessage: %s" % (symbol, str(resp.status_code), str(resp.text)))
 
     # data get functions
     def getData(self, symbol, lookback = 1):
@@ -40,10 +52,6 @@ class TradingInteractor():
         # it is reversed, so switch around
         data = data.iloc[::-1]
         return data
-
-    def getCurrentPrice(self, symbol):
-        url = self.url + "data/price/current/" + symbol
-        return float(get(url).text)
 
     def getApeWisdomSymbol(self, symbol, lookback):
         url = self.url + "data/apewisdom/" + symbol + "/" + str(lookback)
